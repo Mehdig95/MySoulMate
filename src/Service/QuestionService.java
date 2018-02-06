@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,18 +75,93 @@ public class QuestionService implements IQuestionService
     }
 
     @Override
-    public void ModifierQuestion(Question Q) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void ModifierQuestion(Question Q) 
+    {
+        
+        try 
+        {
+            String SQL = "UPDATE `question` SET `Question`= ?,`Type`= ?,`Reponse1`= ?,`Reponse2`=?,`Reponse3`= ?,`ScoreRep1`= ? ,`ScoreRep2`= ? ,`ScoreRep3`= ? WHERE `ID` = ?";
+            PreparedStatement stm;
+
+            stm = Con.prepareStatement(SQL);
+
+            stm.setString(1, Q.getQuestion());
+            stm.setInt(2, Q.getType().getTypeID());
+            stm.setString(3, Q.getReponse1());
+            stm.setString(4, Q.getReponse2());
+            stm.setString(5, Q.getReponse3());
+            stm.setInt(6, Q.getScoreRep1());
+            stm.setInt(7, Q.getScoreRep2());
+            stm.setInt(8, Q.getScoreRep3());
+            stm.setInt(9, Q.getID());
+
+            stm.execute();
+
+            System.out.println("modifier ok");
+        } 
+        catch (SQLException ex)
+        {
+            Logger.getLogger(QuestionService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }
 
     @Override
-    public void SupprimerQuestion(Question Q) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void SupprimerQuestion(Question Q)
+    {
+        try 
+        {
+            String SQL = "DELETE FROM `question` WHERE ID = ?";
+            PreparedStatement stm;
+
+            stm = Con.prepareStatement(SQL);
+            stm.setInt(1, Q.getID());
+            stm.execute();
+
+            System.out.println("Supprimer ok");
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(QuestionService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @Override
-    public List<Question> SelectQuestion(TypeQuestion T) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Question> SelectQuestion(TypeQuestion T)
+    {
+        
+        List<Question> QL = new ArrayList<>();
+        
+        try
+        {
+            String SQL = "SELECT * FROM `question` WHERE Type = ?";
+            PreparedStatement stm = Con.prepareStatement(SQL);
+            stm.setInt(1, T.getTypeID());
+            ResultSet Res = stm.executeQuery();
+            
+            while (Res.next()) 
+            {
+                Question Q = new Question();
+                Q.setID(Res.getInt(1));
+                Q.setQuestion(Res.getString(2));
+                int TypeID = Res.getInt(3) - 1;
+                Q.setType(TypeQuestion.values()[TypeID]);
+                Q.setReponse1(Res.getString(4));
+                Q.setReponse2(Res.getString(5));
+                Q.setReponse3(Res.getString(6));
+                Q.setScoreRep1(Res.getInt(7));
+                Q.setScoreRep2(Res.getInt(8));
+                Q.setScoreRep3(Res.getInt(9));
+                QL.add(Q);
+            }
+        } catch (SQLException ex) 
+        {
+            Logger.getLogger(QuestionService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return QL;
+        
     }
     
 }
