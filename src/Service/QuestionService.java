@@ -65,6 +65,8 @@ public class QuestionService implements IQuestionService
                 System.out.println(id);
             }
             System.out.println("ajout ok");
+            NotificationService NS = new NotificationService();
+            NS.displayNotification("MySoulMate", "Question added successfully!");
         } 
         catch (SQLException ex)
         {
@@ -97,7 +99,8 @@ public class QuestionService implements IQuestionService
 
             stm.execute();
 
-            System.out.println("modifier ok");
+            NotificationService NS = new NotificationService();
+            NS.displayNotification("MySoulMate", "Question modified successfully!");
         } 
         catch (SQLException ex)
         {
@@ -119,7 +122,8 @@ public class QuestionService implements IQuestionService
             stm.setInt(1, Q.getID());
             stm.execute();
 
-            System.out.println("Supprimer ok");
+            NotificationService NS = new NotificationService();
+            NS.displayNotification("MySoulMate", "Question deleted successfully!");
         }
         catch (SQLException ex)
         {
