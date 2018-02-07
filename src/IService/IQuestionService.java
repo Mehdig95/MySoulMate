@@ -19,5 +19,6 @@ public interface IQuestionService
     public void ModifierQuestion(Question Q);
     public void SupprimerQuestion(Question Q);
     public List<Question> SelectQuestion(TypeQuestion T);
+    public List<Question> SelectQuestion(int ID);
     
 }
