@@ -7,6 +7,7 @@ package IService;
 
 import Entite.Interest;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,6 +16,6 @@ import java.util.ArrayList;
 public interface IInterestService {
     
     public void AjouterInterest(Interest I);
-    public ArrayList<Integer> SelectInterest();
+    public List<Interest> SelectInterest(Interest I);
     
 }

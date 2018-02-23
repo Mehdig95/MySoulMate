@@ -82,7 +82,7 @@ public class QuestionService implements IQuestionService
         
         try 
         {
-            String SQL = "UPDATE `question` SET `Question`= ?,`Type`= ?,`Reponse1`= ?,`Reponse2`=?,`Reponse3`= ?,`ScoreRep1`= ? ,`ScoreRep2`= ? ,`ScoreRep3`= ? WHERE `ID` = ?";
+            String SQL = "UPDATE `question` SET `Question`= ? ,`Type` = ? ,`Reponse1`= ?,`Reponse2`=?,`Reponse3`= ?,`ScoreRep1`= ? ,`ScoreRep2`= ? ,`ScoreRep3`= ? WHERE `ID` = ?";
             PreparedStatement stm;
 
             stm = Con.prepareStatement(SQL);
@@ -100,7 +100,7 @@ public class QuestionService implements IQuestionService
             stm.execute();
 
             NotificationService NS = new NotificationService();
-            NS.displayNotification("MySoulMate", "Question modified successfully!");
+            NS.displayNotification("Youssef", "Question modified successfully!");
         } 
         catch (SQLException ex)
         {
@@ -178,6 +178,40 @@ public class QuestionService implements IQuestionService
             String SQL = "SELECT * FROM `question` WHERE ID = ?";
             PreparedStatement stm = Con.prepareStatement(SQL);
             stm.setInt(1, ID);
+            ResultSet Res = stm.executeQuery();
+            
+            while (Res.next()) 
+            {
+                Question Q = new Question();
+                Q.setID(Res.getInt(1));
+                Q.setQuestion(Res.getString(2));
+                int TypeID = Res.getInt(3) - 1;
+                Q.setType(TypeQuestion.values()[TypeID]);
+                Q.setReponse1(Res.getString(4));
+                Q.setReponse2(Res.getString(5));
+                Q.setReponse3(Res.getString(6));
+                Q.setScoreRep1(Res.getInt(7));
+                Q.setScoreRep2(Res.getInt(8));
+                Q.setScoreRep3(Res.getInt(9));
+                QL.add(Q);
+            }
+        } catch (SQLException ex) 
+        {
+            Logger.getLogger(QuestionService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return QL;
+        
+    }
+     
+      public List<Question> SelectQuestion()
+    {
+        
+        List<Question> QL = new ArrayList<>();
+        
+        try
+        {
+            String SQL = "SELECT * FROM `question` limit 10";
+            PreparedStatement stm = Con.prepareStatement(SQL);          
             ResultSet Res = stm.executeQuery();
             
             while (Res.next()) 

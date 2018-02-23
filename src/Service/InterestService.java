@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -71,8 +72,44 @@ public class InterestService implements IInterestService
     }
 
     @Override
-    public ArrayList<Integer> SelectInterest() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Interest> SelectInterest(Interest I) {
+        
+          List<Interest> L = new ArrayList<>();
+          try {
+              String SQL = "SELECT * FROM `Interets` WHERE `ID_User` != ? AND ((`InteretPhy` = ? AND `InteretPhy` = ?) OR (`InteretPerso` = ? AND `InteretPerso` = ?) OR (`InteretSoc` = ? AND `InteretSoc` = ?) OR (`InteretVieC` = ? AND `InteretVieC` = ?))";
+              PreparedStatement stm;
+              
+              stm = Con.prepareStatement(SQL, PreparedStatement.RETURN_GENERATED_KEYS);
+              
+              stm.setInt(1, I.getID_User());
+              stm.setInt(2, I.getPourcentagePhy()-10);
+              stm.setInt(3, I.getPourcentagePhy()+10);
+              stm.setInt(4, I.getPourcentagePerso()-10);
+              stm.setInt(5, I.getPourcentagePerso()+10);
+              stm.setInt(6, I.getPourcentageSoc()-10);
+              stm.setInt(7, I.getPourcentageSoc()+10);
+              stm.setInt(8, I.getPourcentageVieC()-10);
+              stm.setInt(9, I.getPourcentageVieC()+10);
+              
+               ResultSet Res = stm.executeQuery();
+            
+            while (Res.next()) 
+            {
+                Interest C = new Interest();
+                C.setID(Res.getInt(1));
+                C.setID_User(Res.getInt(2));
+                C.setPourcentagePhy(Res.getInt(3));
+                C.setPourcentagePerso(Res.getInt(4));
+                C.setPourcentageSoc(Res.getInt(5));
+                C.setPourcentageVieC(Res.getInt(6));
+                L.add(C);
+            }
+              
+              
+          } catch (SQLException ex) {
+              Logger.getLogger(InterestService.class.getName()).log(Level.SEVERE, null, ex);
+          }
+          return L;
     }
     
     

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1000.0" style="-fx-background-color: #FFE5E5;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.DashboardFXMLController">
+   <children>
+      <JFXToolbar prefHeight="48.0" prefWidth="1000.0" style="-fx-background-color: #FBC2C2;" />
+      <JFXHamburger fx:id="hamburger" layoutX="15.0" layoutY="15.0" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="300.0" layoutY="48.0" prefHeight="702.0" prefWidth="113.0" />
+      <AnchorPane fx:id="holderpane" layoutX="116.0" layoutY="48.0" prefHeight="702.0" prefWidth="884.0" />
+   </children>
+</AnchorPane>

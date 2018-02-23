@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="565.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.ModifierQuestionGUIController">
+   <children>
+      <TableView fx:id="tableView" layoutX="45.0" layoutY="32.0" prefHeight="184.0" prefWidth="706.0">
+        <columns>
+          <TableColumn fx:id="ColumnID" prefWidth="103.0" text="ID" />
+          <TableColumn fx:id="ColumnQuestion" prefWidth="355.0" text="Question" />
+            <TableColumn fx:id="ColumnType" prefWidth="247.0" text="Type" />
+        </columns>
+      </TableView>
+      <JFXTextField fx:id="QuestionLabel" labelFloat="true" layoutX="45.0" layoutY="244.0" prefHeight="17.0" prefWidth="389.0" promptText="Question:" />
+      <JFXTextField fx:id="Rep1Label" labelFloat="true" layoutX="45.0" layoutY="307.0" promptText="Reponse 1" />
+      <JFXTextField fx:id="Rep2Label" labelFloat="true" layoutX="45.0" layoutY="361.0" promptText="Reponse 2" />
+      <JFXTextField fx:id="Rep3Label" labelFloat="true" layoutX="45.0" layoutY="424.0" promptText="Reponse 3" />
+      <JFXTextField fx:id="Score1" labelFloat="true" layoutX="240.0" layoutY="307.0" prefHeight="31.0" prefWidth="39.0" promptText="Score" />
+      <JFXTextField fx:id="Score2" labelFloat="true" layoutX="240.0" layoutY="361.0" prefHeight="31.0" prefWidth="39.0" promptText="Score" />
+      <JFXTextField fx:id="Score3" labelFloat="true" layoutX="240.0" layoutY="424.0" prefHeight="31.0" prefWidth="39.0" promptText="Score" />
+      <JFXButton layoutX="402.0" layoutY="432.0" onAction="#ModifierQuestion" prefHeight="31.0" prefWidth="101.0" text="Modifier" />
+      <JFXButton layoutX="523.0" layoutY="432.0" onAction="#SupprimerQuestion" text="Supprimer" />
+      <JFXComboBox fx:id="ComboBox" layoutX="402.0" layoutY="323.0" prefHeight="31.0" prefWidth="279.0" />
+      <JFXTextField fx:id="IDLabel" focusColor="#40a84d" labelFloat="true" layoutX="503.0" layoutY="244.0" prefHeight="31.0" prefWidth="39.0" promptText="ID" />
+   </children>
+</AnchorPane>

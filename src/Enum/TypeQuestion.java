@@ -11,7 +11,7 @@ package Enum;
  */
 public enum TypeQuestion {
     
-    QuestVieCouple("VieCouple",1), QuestSociale("Psycho",2), QuestPersonalite("Famille",3) , QuestPhysique("Forme Et Sport",4);
+    QuestVieCouple("QuestVieCouple",1), QuestSociale("QuestSociale",2), QuestPersonalite("QuestPersonalite",3) , QuestPhysique("QuestPhysique",4);
     
     private String NomDeType;
     private int TypeID;

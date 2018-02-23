@@ -1,0 +1,107 @@
+
+/*------------------------------------------*/
+.pagination > .pagination-control > .control-box {
+    -fx-spacing: 0;
+}
+
+/* You can control the actual button sizes here */
+.pagination > .pagination-control > .control-box > .number-button,
+.pagination > .pagination-control > .control-box > .bullet-button,
+.pagination > .pagination-control > .control-box > .left-arrow-button,
+.pagination > .pagination-control > .control-box > .right-arrow-button {
+    -fx-background-insets: 0, 1;
+    -fx-background-color: lightgray, #FAFAFA;
+    -fx-min-width: 20;
+    -fx-min-height: 20;
+}
+
+/* Colors on hover */
+.pagination > .pagination-control > .control-box > .number-button:hover,
+.pagination > .pagination-control > .control-box > .bullet-button:hover,
+.pagination > .pagination-control > .control-box > .left-arrow-button:hover,
+.pagination > .pagination-control > .control-box > .right-arrow-button:hover {
+    -fx-background-insets: 0;
+    -fx-background-color: lightgray;
+}
+
+/* Selected toggle color */
+.pagination > .pagination-control > .control-box > .number-button:selected,
+.pagination > .pagination-control > .control-box > .bullet-button:selected{
+    -fx-background-insets: 0;
+    -fx-background-color:  #FFDCDC;
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+}
+
+/* --------------------- SCROLLBAR ------------------------- */
+.scroll-pane {
+    -fx-background-color: #FEF3F3;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: white;
+    -fx-background-radius: 5em;
+}
+/* -----------DECOATOR------------ */
+/*Decorator*/
+.jfx-decorator {
+    -fx-decorator-color:#DCDCDC;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+
+}
+.jfx-decorator .jfx-decorator-buttons-container{
+    -fx-background-color:-fx-decorator-color;
+}
+.jfx-decorator .resize-border{
+    -fx-border-color:-fx-decorator-color;
+    -fx-border-width: 0 0 0 0;
+}
+
+
+/*-----------ALERT-------------*/
+ .dialog-pane{
+  -fx-border-color:#DCDCDC;
+  -fx-border-width:2.0px;
+ }
+
+/**Costumization of The Bar where the buttons are located**/
+.dialog-pane > .button-bar > .container {
+  -fx-background-color:#DCDCDC;
+}
+
+.dialog-pane > .content.label {
+   -fx-padding: 0.5em 0.5em 0.5em 0.5em;
+   -fx-background-color: #DCDCDC;
+   -fx-text-fill:#FAFAFA;
+   -fx-font-size:15.0px;
+}
+
+/**Costumization of DialogPane Header**/
+.dialog-pane:header .header-panel {
+  -fx-background-color: black;
+}
+
+.dialog-pane:header .header-panel .label{
+  -fx-background-color: #DCDCDC;
+  -fx-background-radius:10px;
+  -fx-text-fill:#FAFAFA;
+  -fx-font-size:15.0px;
+}
